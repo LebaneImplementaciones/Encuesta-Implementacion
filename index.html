@@ -257,7 +257,7 @@
         <option value="" disabled selected>Seleccioná un implementador</option>
         <option value="Agustin">Agustín</option>
         <option value="Brisa">Brisa</option>
-        <option value="Gabriela">Gabriela</option>
+        <option value="Gabriel">Gabriel</option>
         <option value="Julieta">Julieta</option>
       </select>
 
@@ -265,6 +265,20 @@
 
       <label class="field-label req" for="empresa">Nombre de la empresa</label>
       <input type="text" id="empresa" name="empresa" placeholder="Ej: Acme S.A." required>
+    </div>
+
+    <!-- NPS -->
+    <div class="section-title"><span class="section-num">Para empezar</span><h2>Recomendación</h2></div>
+
+    <div class="card nps-card">
+      <label class="field-label req">¿Qué tan probable es que recomiendes nuestro servicio de onboarding a otra empresa?</label>
+      <div class="faces" data-name="nps">
+        <label class="face-opt"><input type="radio" name="nps" value="1" required><span class="face-emoji">😡</span><span class="face-label">Muy&nbsp;improbable</span></label>
+        <label class="face-opt"><input type="radio" name="nps" value="2"><span class="face-emoji">🙁</span><span class="face-label">Improbable</span></label>
+        <label class="face-opt"><input type="radio" name="nps" value="3"><span class="face-emoji">😐</span><span class="face-label">Neutral</span></label>
+        <label class="face-opt"><input type="radio" name="nps" value="4"><span class="face-emoji">🙂</span><span class="face-label">Probable</span></label>
+        <label class="face-opt"><input type="radio" name="nps" value="5"><span class="face-emoji">😄</span><span class="face-label">Muy&nbsp;probable</span></label>
+      </div>
     </div>
 
     <!-- SECCIÓN 1 -->
@@ -336,33 +350,6 @@
       </div>
     </div>
 
-    <!-- SECCIÓN 4 -->
-    <div class="section-title"><span class="section-num">Sección 4</span><h2>Comentarios adicionales</h2></div>
-
-    <div class="card">
-      <label class="field-label" for="q7">¿Qué sugerencias o comentarios tenés sobre el proceso de onboarding?</label>
-      <textarea id="q7" name="q7"></textarea>
-    </div>
-
-    <div class="card">
-      <label class="field-label" for="q8">¿Qué fue lo que más valoraste de las reuniones?</label>
-      <textarea id="q8" name="q8"></textarea>
-    </div>
-
-    <!-- NPS -->
-    <div class="section-title"><span class="section-num">Para cerrar</span><h2>Recomendación</h2></div>
-
-    <div class="card nps-card">
-      <label class="field-label req">¿Qué tan probable es que recomiendes nuestro servicio de onboarding a otra empresa?</label>
-      <div class="faces" data-name="nps">
-        <label class="face-opt"><input type="radio" name="nps" value="1" required><span class="face-emoji">😡</span><span class="face-label">Muy&nbsp;improbable</span></label>
-        <label class="face-opt"><input type="radio" name="nps" value="2"><span class="face-emoji">🙁</span><span class="face-label">Improbable</span></label>
-        <label class="face-opt"><input type="radio" name="nps" value="3"><span class="face-emoji">😐</span><span class="face-label">Neutral</span></label>
-        <label class="face-opt"><input type="radio" name="nps" value="4"><span class="face-emoji">🙂</span><span class="face-label">Probable</span></label>
-        <label class="face-opt"><input type="radio" name="nps" value="5"><span class="face-emoji">😄</span><span class="face-label">Muy&nbsp;probable</span></label>
-      </div>
-    </div>
-
     <button type="submit" class="submit" id="btnSubmit">Enviar respuestas</button>
     <div class="status" id="status"></div>
   </form>
@@ -373,7 +360,7 @@
     <p>Tu evaluación fue enviada correctamente.</p>
   </div>
 
-  <footer class="foot">Lebane.app - Sistema de gestion para desarrolladoras y constructoras.</footer>
+  <footer class="foot">Evaluación Onboarding Manager</footer>
 </div>
 
 <script>
