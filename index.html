@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Panel Onboarding · Lebane</title>
+<title>Evaluación Onboarding Manager</title>
 <style>
   :root{
     --ink:#343A46;
@@ -13,10 +13,9 @@
     --brand:#2065FF;
     --brand-dark:#12409e;
     --brand-light:#eaf1ff;
+    --accent:#2065FF;
     --muted:#6b7280;
     --danger:#c4433a;
-    --good:#1a9e6b;
-    --warn:#e0a323;
   }
   *{box-sizing:border-box;}
   body{
@@ -26,316 +25,210 @@
     color:var(--ink);
     line-height:1.5;
   }
-  .wrap{max-width:1180px;margin:0 auto;padding:0 24px 60px;}
-
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px 80px;}
   header.top{
     background:#ffffff;
     border-bottom:1px solid var(--line);
-    padding:24px 24px 20px;
-    margin-bottom:20px;
-  }
-  header.top .inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-  .logo{height:26px;width:auto;}
-  .title-block h1{font-size:19px;margin:0;font-weight:700;}
-  .title-block .sub{font-size:12.5px;color:var(--muted);margin-top:2px;}
-  .refresh-info{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:10px;}
-  button.refresh{
-    border:1px solid var(--line);
-    background:#fff;
-    color:var(--brand);
-    font-weight:600;
-    font-size:12.5px;
-    padding:7px 12px;
-    border-radius:8px;
-    cursor:pointer;
-  }
-  button.refresh:hover{background:var(--brand-light);}
-
-  /* filtros */
-  .filters{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-bottom:20px;
-  }
-  .filter-group{display:flex;flex-direction:column;gap:4px;}
-  .filter-group label{font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
-  .filter-group select, .filter-group input{
-    padding:9px 10px;
-    border:1px solid var(--line);
-    border-radius:8px;
-    font-size:13.5px;
-    background:#fff;
     color:var(--ink);
-    min-width:170px;
+    padding:32px 20px 40px;
+    margin-bottom:-24px;
   }
-  .filter-group select:focus, .filter-group input:focus{outline:2px solid var(--brand);outline-offset:1px;}
-  .clear-filters{
-    align-self:flex-end;
-    font-size:12.5px;
+  header.top .inner{max-width:720px;margin:0 auto;}
+  .logo{
+    display:block;
+    height:34px;
+    width:auto;
+    margin-bottom:22px;
+  }
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:12px;
     color:var(--brand);
-    background:none;
-    border:none;
-    cursor:pointer;
-    text-decoration:underline;
-    padding:9px 0;
+    font-weight:700;
+    margin-bottom:10px;
   }
-
-  /* KPI cards */
-  .kpi-row{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-    gap:14px;
-    margin-bottom:20px;
+  h1{
+    font-size:28px;
+    margin:0 0 10px;
+    font-weight:700;
+    letter-spacing:-.01em;
+    color:var(--ink);
   }
-  .kpi-card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:18px 20px;
-  }
-  .kpi-label{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.03em;margin-bottom:8px;}
-  .kpi-value{font-size:30px;font-weight:800;color:var(--ink);line-height:1;}
-  .kpi-value small{font-size:15px;font-weight:600;color:var(--muted);margin-left:4px;}
-  .kpi-sub{font-size:12.5px;color:var(--muted);margin-top:6px;}
-  .kpi-value.nps-good{color:var(--good);}
-  .kpi-value.nps-mid{color:var(--warn);}
-  .kpi-value.nps-bad{color:var(--danger);}
-
-  .panels-row{
-    display:grid;
-    grid-template-columns:1.1fr 1fr;
-    gap:14px;
-    margin-bottom:20px;
-  }
-  @media (max-width:860px){.panels-row{grid-template-columns:1fr;}}
+  header.top p{margin:0;color:var(--muted);font-size:15px;max-width:520px;}
 
   .card{
     background:var(--card);
     border:1px solid var(--line);
     border-radius:14px;
-    padding:18px 20px;
+    padding:26px 24px;
+    margin-bottom:18px;
+    box-shadow:0 2px 10px rgba(15,92,82,0.05);
+    position:relative;
+    z-index:1;
   }
-  .card h2{font-size:14.5px;margin:0 0 14px;font-weight:700;}
+  .meta-card{margin-top:0;}
+  .section-title{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin:34px 0 14px;
+  }
+  .section-num{
+    font-size:13px;
+    font-weight:700;
+    color:var(--brand);
+    background:var(--brand-light);
+    padding:3px 9px;
+    border-radius:20px;
+    letter-spacing:.03em;
+  }
+  .section-title h2{
+    font-size:16px;
+    margin:0;
+    font-weight:700;
+    color:var(--ink);
+  }
+  label.field-label{
+    display:block;
+    font-weight:600;
+    font-size:14.5px;
+    margin-bottom:4px;
+  }
+  .q-help{font-size:12.5px;color:var(--muted);margin-bottom:12px;}
+  .req::after{
+    content:" *";
+    color:var(--danger);
+  }
+  select, input[type=text], textarea{
+    width:100%;
+    padding:11px 12px;
+    border:1px solid #c8d3d0;
+    border-radius:9px;
+    font-size:14.5px;
+    font-family:inherit;
+    background:#fff;
+    color:var(--ink);
+    margin-top:6px;
+  }
+  select:focus, input:focus, textarea:focus{
+    outline:2px solid var(--brand);
+    outline-offset:1px;
+    border-color:var(--brand);
+  }
+  textarea{resize:vertical;min-height:80px;}
 
-  /* sin vincular */
-  .unmatched-card{
-    background:#fffaf0;
-    border:1px solid #f0d9a8;
-    border-radius:14px;
-    padding:18px 20px;
-    margin-bottom:20px;
-  }
-  .unmatched-card h2{font-size:14.5px;margin:0 0 4px;font-weight:700;color:#8a5a10;}
-  .unmatched-card .hint{font-size:12.5px;color:#9c7327;margin-bottom:14px;}
-  .unmatched-row{
+  .options{display:flex;flex-direction:column;gap:8px;margin-top:6px;}
+  .opt{
     display:flex;
     align-items:center;
     gap:10px;
-    flex-wrap:wrap;
-    padding:12px 0;
-    border-bottom:1px solid #f0e0bd;
-  }
-  .unmatched-row:last-child{border-bottom:none;}
-  .unmatched-info{flex:1;min-width:220px;}
-  .unmatched-empresa{font-weight:700;font-size:14px;}
-  .unmatched-meta{font-size:12px;color:var(--muted);margin-top:2px;}
-  .unmatched-actions{display:flex;gap:8px;align-items:center;flex:none;}
-  .unmatched-actions select{
-    padding:8px 10px;
     border:1px solid var(--line);
-    border-radius:8px;
-    font-size:13px;
-    min-width:190px;
-  }
-  .btn-vincular{
-    background:var(--brand);
-    color:#fff;
-    border:none;
-    padding:8px 14px;
-    border-radius:8px;
-    font-size:13px;
-    font-weight:700;
+    border-radius:9px;
+    padding:11px 13px;
     cursor:pointer;
+    transition:border-color .15s, background .15s;
   }
-  .btn-vincular:hover{background:var(--brand-dark);}
-  .btn-vincular:disabled{background:#a9bedb;cursor:wait;}
-  .link-status{font-size:11.5px;color:var(--good);margin-left:4px;}
+  .opt:hover{border-color:var(--brand);}
+  .opt input{margin:0;accent-color:var(--brand);width:17px;height:17px;flex:none;}
+  .opt.checked{border-color:var(--brand);background:var(--brand-light);}
+  .opt span{font-size:14.5px;}
 
-  /* OM breakdown */
-  .om-row{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:9px 0;
-    border-bottom:1px solid var(--line);
-  }
-  .om-row:last-child{border-bottom:none;}
-  .om-name{width:80px;font-size:13.5px;font-weight:600;flex:none;}
-  .om-bar-track{flex:1;height:8px;background:var(--brand-light);border-radius:6px;overflow:hidden;}
-  .om-bar-fill{height:100%;background:var(--brand);border-radius:6px;}
-  .om-score{width:70px;text-align:right;font-size:13px;font-weight:700;flex:none;}
-  .om-count{width:70px;text-align:right;font-size:11.5px;color:var(--muted);flex:none;}
+  .no-detail{display:none;margin-top:8px;}
+  .no-detail.show{display:block;}
 
-  /* faces filter card */
-  .faces-filter{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
+  .nps-card{
+    background:linear-gradient(180deg,#fff, #fbfdfc);
   }
-  .face-btn{
+  .faces{
+    display:flex;
+    justify-content:space-between;
+    gap:6px;
+    margin-top:16px;
+  }
+  .face-opt{
     flex:1;
-    min-width:80px;
     text-align:center;
-    border:1.5px solid var(--line);
+    border:1px solid var(--line);
     border-radius:12px;
-    padding:12px 6px 10px;
+    padding:12px 4px 10px;
     cursor:pointer;
-    background:#fff;
-    transition:border-color .15s, background .15s, transform .1s;
-    user-select:none;
+    transition:transform .12s, border-color .15s, background .15s;
   }
-  .face-btn:hover{transform:translateY(-1px);}
-  .face-btn.active{
-    border-color:var(--brand);
+  .face-opt:hover{transform:translateY(-2px);}
+  .face-opt.checked{
+    border-color:var(--accent);
     background:var(--brand-light);
   }
-  .face-btn .emo{font-size:24px;display:block;line-height:1;}
-  .face-btn .cnt{font-size:16px;font-weight:800;display:block;margin-top:6px;}
-  .face-btn .lbl{font-size:10px;color:var(--muted);display:block;margin-top:2px;}
-  .faces-hint{font-size:11.5px;color:var(--muted);margin-top:10px;}
-
-  /* table */
-  .table-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px 6px;}
-  .table-head-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:10px;}
-  .table-head-row h2{margin:0;font-size:14.5px;font-weight:700;}
-  .table-count{font-size:12.5px;color:var(--muted);}
-  .table-scroll{overflow-x:auto;padding-bottom:14px;}
-  table{border-collapse:collapse;width:100%;min-width:1100px;font-size:13px;}
-  thead th{
-    text-align:left;
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:.03em;
-    color:var(--muted);
-    padding:8px 10px;
-    border-bottom:2px solid var(--line);
-    white-space:nowrap;
-    position:sticky;
-    top:0;
-    background:#fff;
-  }
-  tbody td{
-    padding:9px 10px;
-    border-bottom:1px solid var(--line);
-    white-space:nowrap;
-    max-width:220px;
-    overflow:hidden;
-    text-overflow:ellipsis;
-  }
-  tbody tr:hover{background:var(--brand-light);}
-  .nps-pill{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    width:26px;height:26px;
-    border-radius:50%;
-    font-size:14px;
-    font-weight:700;
-  }
-  .pill-1{background:#fde2e0;color:#b13a31;}
-  .pill-2{background:#fde9d6;color:#a45b1c;}
-  .pill-3{background:#f0eee0;color:#8a7f2c;}
-  .pill-4{background:#deeee0;color:#25774a;}
-  .pill-5{background:#d8f0e2;color:#1a9e6b;}
-
-  .empty-state, .loading-state, .error-state{
-    text-align:center;
-    padding:60px 20px;
-    color:var(--muted);
-    font-size:13.5px;
-  }
-  .error-state{color:var(--danger);}
-  .config-box{
-    max-width:520px;
-    margin:60px auto;
-    background:#fff;
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:24px;
-  }
-  .config-box h2{margin:0 0 8px;font-size:16px;}
-  .config-box p{font-size:13.5px;color:var(--muted);margin:0 0 12px;}
-  .config-box code{
-    display:block;
-    background:var(--paper);
-    padding:10px;
-    border-radius:8px;
-    font-size:12px;
-    word-break:break-all;
-  }
-
-  /* pantalla de acceso */
-  .lockscreen{
-    min-height:100vh;
+  .face-opt input{display:none;}
+  .face-emoji{font-size:26px;display:block;line-height:1;}
+  .face-label{font-size:10.5px;color:var(--muted);display:block;margin-top:6px;}
+  .nps-scale-labels{
     display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
+    justify-content:space-between;
+    font-size:11px;
+    color:var(--muted);
+    margin-top:6px;
   }
-  .lockscreen-box{
-    width:100%;
-    max-width:360px;
-    background:#fff;
-    border:1px solid var(--line);
-    border-radius:16px;
-    padding:32px 28px;
-    text-align:center;
-    box-shadow:0 4px 24px rgba(18,64,158,0.08);
-  }
-  .lockscreen-box .logo{height:26px;margin-bottom:18px;}
-  .lockscreen-box h1{font-size:17px;margin:0 0 6px;}
-  .lockscreen-box p{font-size:13px;color:var(--muted);margin:0 0 18px;}
-  .lockscreen-box input{
-    width:100%;
-    padding:11px 12px;
-    border:1px solid var(--line);
-    border-radius:9px;
-    font-size:14.5px;
-    text-align:center;
-    letter-spacing:.05em;
-    margin-bottom:10px;
-  }
-  .lockscreen-box input:focus{outline:2px solid var(--brand);outline-offset:1px;border-color:var(--brand);}
-  .lockscreen-box button{
+
+  button.submit{
     width:100%;
     background:var(--brand);
     color:#fff;
     border:none;
-    padding:12px;
-    font-size:14.5px;
+    padding:15px;
+    font-size:15.5px;
     font-weight:700;
-    border-radius:9px;
+    border-radius:10px;
     cursor:pointer;
+    margin-top:8px;
+    transition:background .15s;
   }
-  .lockscreen-box button:hover{background:var(--brand-dark);}
-  .lockscreen-box button:disabled{background:#a9bedb;cursor:wait;}
-  .lockscreen-error{color:var(--danger);font-size:12.5px;margin-top:10px;min-height:16px;}
+  button.submit:hover{background:var(--brand-dark);}
+  button.submit:disabled{background:#9fb8b3;cursor:wait;}
 
-  .logout-link{
-    font-size:12px;
+  .status{
+    text-align:center;
+    font-size:13.5px;
+    margin-top:12px;
+    min-height:18px;
+  }
+  .status.error{color:var(--danger);}
+  .status.ok{color:var(--brand);}
+
+  .done-screen{
+    text-align:center;
+    padding:60px 20px;
+  }
+  .done-screen .check{
+    width:64px;height:64px;border-radius:50%;
+    background:var(--brand-light);
+    color:var(--brand);
+    display:flex;align-items:center;justify-content:center;
+    font-size:32px;margin:0 auto 18px;
+  }
+  .done-screen h2{margin:0 0 8px;color:var(--ink);}
+  .done-screen p{color:var(--muted);margin:0;}
+
+  footer.foot{
+    text-align:center;
+    font-size:11.5px;
     color:var(--muted);
-    text-decoration:underline;
-    cursor:pointer;
-    background:none;
-    border:none;
+    margin-top:24px;
+  }
+
+  @media (max-width:480px){
+    h1{font-size:23px;}
+    .face-emoji{font-size:21px;}
+    .face-label{font-size:9px;}
+    header.top{padding:38px 16px 56px;}
   }
 </style>
 </head>
 <body>
 
-<div class="lockscreen" id="lockScreen">
-  <div class="lockscreen-box">
+<header class="top">
+  <div class="inner">
     <svg class="logo" viewBox="0 0 214 68" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="26.7129" y="17.9668" width="22.6949" height="9.4562" fill="#2065FF"/>
       <rect x="26.7129" y="31.2056" width="22.6949" height="9.4562" fill="#2065FF"/>
@@ -348,563 +241,197 @@
       <path d="M155.643 52.1947V28.4468H161.013V33.1178L160.576 32.2884C161.129 30.8623 162.031 29.7855 163.283 29.058C164.563 28.3013 166.047 27.923 167.735 27.923C169.482 27.923 171.024 28.3013 172.363 29.058C173.731 29.8146 174.793 30.8769 175.549 32.2447C176.306 33.5835 176.685 35.1405 176.685 36.9157V52.1947H170.966V38.269C170.966 37.2213 170.762 36.3191 170.355 35.5625C169.947 34.8058 169.38 34.2237 168.652 33.8163C167.954 33.3797 167.124 33.1615 166.164 33.1615C165.233 33.1615 164.403 33.3797 163.676 33.8163C162.948 34.2237 162.38 34.8058 161.973 35.5625C161.566 36.3191 161.362 37.2213 161.362 38.269V52.1947H155.643Z" fill="#343A46"/>
       <path d="M190.994 52.7186C188.549 52.7186 186.41 52.1656 184.577 51.0597C182.743 49.9538 181.317 48.455 180.299 46.5633C179.28 44.6717 178.771 42.5762 178.771 40.2771C178.771 37.8907 179.28 35.7807 180.299 33.9472C181.346 32.0847 182.758 30.615 184.533 29.5382C186.338 28.4614 188.346 27.923 190.557 27.923C192.42 27.923 194.05 28.2285 195.447 28.8397C196.873 29.4509 198.081 30.2948 199.07 31.3716C200.06 32.4484 200.816 33.6853 201.34 35.0823C201.864 36.4501 202.126 37.9343 202.126 39.535C202.126 39.9424 202.097 40.3644 202.039 40.801C202.009 41.2375 201.937 41.6159 201.82 41.936H183.485V37.5706H198.59L195.883 39.6223C196.145 38.2836 196.072 37.0904 195.665 36.0427C195.287 34.995 194.646 34.1655 193.744 33.5544C192.871 32.9432 191.809 32.6376 190.557 32.6376C189.364 32.6376 188.302 32.9432 187.371 33.5544C186.439 34.1364 185.726 35.0095 185.232 36.1736C184.766 37.3086 184.591 38.691 184.708 40.3208C184.591 41.7759 184.781 43.071 185.275 44.206C185.799 45.3119 186.556 46.1705 187.545 46.7816C188.564 47.3928 189.728 47.6984 191.038 47.6984C192.347 47.6984 193.453 47.4219 194.355 46.8689C195.287 46.316 196.014 45.5738 196.538 44.6426L201.165 46.9126C200.7 48.0476 199.972 49.0516 198.983 49.9247C197.993 50.7978 196.815 51.4817 195.447 51.9765C194.108 52.4712 192.624 52.7186 190.994 52.7186Z" fill="#343A46"/>
     </svg>
-    <h1>Panel de Onboarding</h1>
-    <p>Acceso exclusivo para el equipo de Lebane</p>
-    <form id="lockForm">
-      <input type="password" id="lockPass" placeholder="Clave de acceso" autocomplete="current-password" required>
-      <button type="submit" id="lockBtn">Ingresar</button>
-    </form>
-    <div class="lockscreen-error" id="lockError"></div>
-  </div>
-</div>
-
-<div id="appContent" style="display:none;">
-<header class="top">
-  <div class="inner">
-    <div style="display:flex;align-items:center;gap:14px;">
-      <svg class="logo" viewBox="0 0 214 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="26.7129" y="17.9668" width="22.6949" height="9.4562" fill="#2065FF"/>
-        <rect x="26.7129" y="31.2056" width="22.6949" height="9.4562" fill="#2065FF"/>
-        <rect x="22.9307" y="44.4441" width="26.4774" height="9.4562" fill="#2065FF"/>
-        <rect x="22.9307" y="17.9668" width="35.9336" height="9.4562" transform="rotate(90 22.9307 17.9668)" fill="#2065FF"/>
-        <path d="M58.3916 52.1948V19.6724H64.3286V46.9563H78.2543V52.1948H58.3916Z" fill="#343A46"/>
-        <path d="M91.3455 52.7187C88.9009 52.7187 86.7618 52.1657 84.9283 51.0598C83.0948 49.9539 81.6688 48.4551 80.6502 46.5634C79.6316 44.6717 79.1223 42.5763 79.1223 40.2772C79.1223 37.8908 79.6316 35.7808 80.6502 33.9473C81.6979 32.0847 83.1094 30.615 84.8847 29.5382C86.689 28.4614 88.6971 27.923 90.909 27.923C92.7715 27.923 94.4013 28.2286 95.7982 28.8398C97.2243 29.4509 98.432 30.2949 99.4215 31.3717C100.411 32.4485 101.168 33.6854 101.692 35.0823C102.215 36.4502 102.477 37.9344 102.477 39.5351C102.477 39.9425 102.448 40.3645 102.39 40.801C102.361 41.2376 102.288 41.6159 102.172 41.936H83.837V37.5706H98.9413L96.2348 39.6224C96.4967 38.2836 96.4239 37.0904 96.0165 36.0427C95.6382 34.995 94.9979 34.1656 94.0957 33.5544C93.2226 32.9433 92.1604 32.6377 90.909 32.6377C89.7157 32.6377 88.6535 32.9433 87.7222 33.5544C86.7909 34.1365 86.0779 35.0096 85.5831 36.1737C85.1175 37.3087 84.9429 38.6911 85.0593 40.3208C84.9429 41.776 85.132 43.0711 85.6268 44.2061C86.1506 45.312 86.9073 46.1705 87.8968 46.7817C88.9154 47.3928 90.0795 47.6984 91.3892 47.6984C92.6988 47.6984 93.8047 47.4219 94.7069 46.869C95.6382 46.316 96.3657 45.5739 96.8896 44.6426L101.517 46.9126C101.051 48.0477 100.324 49.0517 99.3342 49.9248C98.3447 50.7979 97.1661 51.4818 95.7982 51.9765C94.4595 52.4713 92.9753 52.7187 91.3455 52.7187Z" fill="#343A46"/>
-        <path d="M117.43 52.7186C115.713 52.7186 114.127 52.3839 112.672 51.7145C111.246 51.0161 110.111 50.0266 109.267 48.7461L109.835 47.611V52.1947H104.465V19.1484H110.184V33.1615L109.311 31.9828C110.126 30.7023 111.232 29.7128 112.628 29.0143C114.025 28.2867 115.641 27.923 117.474 27.923C119.715 27.923 121.738 28.4759 123.542 29.5818C125.346 30.6877 126.772 32.172 127.82 34.0346C128.897 35.8971 129.435 37.9925 129.435 40.3208C129.435 42.6199 128.912 44.7153 127.864 46.607C126.816 48.4987 125.39 49.9975 123.586 51.1034C121.781 52.1802 119.73 52.7186 117.43 52.7186ZM116.776 47.4801C118.085 47.4801 119.249 47.1745 120.268 46.5633C121.287 45.9522 122.072 45.1082 122.625 44.0314C123.207 42.9546 123.498 41.7177 123.498 40.3208C123.498 38.9238 123.207 37.7015 122.625 36.6538C122.072 35.577 121.287 34.733 120.268 34.1219C119.249 33.4816 118.085 33.1615 116.776 33.1615C115.524 33.1615 114.389 33.4671 113.371 34.0782C112.381 34.6894 111.595 35.5479 111.013 36.6538C110.46 37.7306 110.184 38.9529 110.184 40.3208C110.184 41.7177 110.46 42.9546 111.013 44.0314C111.595 45.1082 112.381 45.9522 113.371 46.5633C114.389 47.1745 115.524 47.4801 116.776 47.4801Z" fill="#343A46"/>
-        <path d="M138.551 52.7186C136.892 52.7186 135.452 52.4421 134.229 51.8892C133.007 51.3362 132.061 50.5504 131.392 49.5318C130.722 48.4841 130.388 47.2764 130.388 45.9085C130.388 44.5989 130.679 43.4348 131.261 42.4162C131.843 41.3685 132.745 40.4954 133.967 39.7969C135.19 39.0985 136.732 38.6037 138.595 38.3127L146.365 37.0467V41.4121L139.686 42.5471C138.551 42.7509 137.707 43.1147 137.154 43.6385C136.601 44.1624 136.325 44.8463 136.325 45.6903C136.325 46.5051 136.63 47.16 137.241 47.6547C137.882 48.1203 138.667 48.3532 139.599 48.3532C140.792 48.3532 141.84 48.1058 142.742 47.611C143.673 47.0872 144.386 46.3742 144.881 45.472C145.405 44.5698 145.667 43.5803 145.667 42.5035V36.3919C145.667 35.3733 145.259 34.5293 144.444 33.8599C143.659 33.1615 142.611 32.8122 141.301 32.8122C140.079 32.8122 138.988 33.1469 138.027 33.8163C137.096 34.4565 136.412 35.3151 135.975 36.3919L131.304 34.1219C131.77 32.8704 132.498 31.7936 133.487 30.8914C134.506 29.9602 135.699 29.2326 137.067 28.7087C138.435 28.1849 139.919 27.923 141.519 27.923C143.469 27.923 145.186 28.2867 146.671 29.0143C148.155 29.7128 149.304 30.7023 150.119 31.9828C150.963 33.2342 151.385 34.7039 151.385 36.3919V52.1947H145.972V48.1349L147.195 48.0476C146.583 49.0662 145.856 49.9247 145.012 50.6232C144.168 51.2926 143.207 51.8164 142.131 52.1947C141.054 52.544 139.861 52.7186 138.551 52.7186Z" fill="#343A46"/>
-        <path d="M155.643 52.1947V28.4468H161.013V33.1178L160.576 32.2884C161.129 30.8623 162.031 29.7855 163.283 29.058C164.563 28.3013 166.047 27.923 167.735 27.923C169.482 27.923 171.024 28.3013 172.363 29.058C173.731 29.8146 174.793 30.8769 175.549 32.2447C176.306 33.5835 176.685 35.1405 176.685 36.9157V52.1947H170.966V38.269C170.966 37.2213 170.762 36.3191 170.355 35.5625C169.947 34.8058 169.38 34.2237 168.652 33.8163C167.954 33.3797 167.124 33.1615 166.164 33.1615C165.233 33.1615 164.403 33.3797 163.676 33.8163C162.948 34.2237 162.38 34.8058 161.973 35.5625C161.566 36.3191 161.362 37.2213 161.362 38.269V52.1947H155.643Z" fill="#343A46"/>
-        <path d="M190.994 52.7186C188.549 52.7186 186.41 52.1656 184.577 51.0597C182.743 49.9538 181.317 48.455 180.299 46.5633C179.28 44.6717 178.771 42.5762 178.771 40.2771C178.771 37.8907 179.28 35.7807 180.299 33.9472C181.346 32.0847 182.758 30.615 184.533 29.5382C186.338 28.4614 188.346 27.923 190.557 27.923C192.42 27.923 194.05 28.2285 195.447 28.8397C196.873 29.4509 198.081 30.2948 199.07 31.3716C200.06 32.4484 200.816 33.6853 201.34 35.0823C201.864 36.4501 202.126 37.9343 202.126 39.535C202.126 39.9424 202.097 40.3644 202.039 40.801C202.009 41.2375 201.937 41.6159 201.82 41.936H183.485V37.5706H198.59L195.883 39.6223C196.145 38.2836 196.072 37.0904 195.665 36.0427C195.287 34.995 194.646 34.1655 193.744 33.5544C192.871 32.9432 191.809 32.6376 190.557 32.6376C189.364 32.6376 188.302 32.9432 187.371 33.5544C186.439 34.1364 185.726 35.0095 185.232 36.1736C184.766 37.3086 184.591 38.691 184.708 40.3208C184.591 41.7759 184.781 43.071 185.275 44.206C185.799 45.3119 186.556 46.1705 187.545 46.7816C188.564 47.3928 189.728 47.6984 191.038 47.6984C192.347 47.6984 193.453 47.4219 194.355 46.8689C195.287 46.316 196.014 45.5738 196.538 44.6426L201.165 46.9126C200.7 48.0476 199.972 49.0516 198.983 49.9247C197.993 50.7978 196.815 51.4817 195.447 51.9765C194.108 52.4712 192.624 52.7186 190.994 52.7186Z" fill="#343A46"/>
-      </svg>
-      <div class="title-block">
-        <h1>Panel de Onboarding</h1>
-        <div class="sub">Respuestas de clientes en tiempo real</div>
-      </div>
-    </div>
-    <div class="refresh-info">
-      <span id="lastUpdate">—</span>
-      <button class="refresh" id="btnRefresh">Actualizar</button>
-      <button class="logout-link" id="btnLogout">Cerrar sesión</button>
-    </div>
+    <div class="eyebrow">Onboarding · Encuesta de cliente</div>
+    <h1>Evaluación Onboarding Manager</h1>
+    <p>Tu opinión sobre las reuniones de onboarding nos ayuda a mejorar el acompañamiento. Toma menos de 3 minutos.</p>
   </div>
 </header>
 
 <div class="wrap">
 
-  <div id="configBox" class="config-box" style="display:none;">
-    <h2>Falta configurar la fuente de datos</h2>
-    <p>Editá la constante <code>SCRIPT_URL</code> en este archivo (al final, dentro del &lt;script&gt;) con la URL de tu Apps Script (la misma que usa el formulario, que termina en <code>/exec</code>).</p>
+  <form id="formOnboarding">
+
+    <div class="card meta-card">
+      <label class="field-label req" for="implementador">Implementador</label>
+      <select id="implementador" name="implementador" required>
+        <option value="" disabled selected>Seleccioná un implementador</option>
+        <option value="Agustin">Agustín</option>
+        <option value="Brisa">Brisa</option>
+        <option value="Gabriel">Gabriel</option>
+        <option value="Julieta">Julieta</option>
+      </select>
+
+      <div style="height:16px"></div>
+
+      <label class="field-label req" for="empresa">Nombre de la empresa</label>
+      <input type="text" id="empresa" name="empresa" placeholder="Ej: Acme S.A." required>
+    </div>
+
+    <!-- NPS -->
+    <div class="section-title"><span class="section-num">Para empezar</span><h2>Recomendación</h2></div>
+
+    <div class="card nps-card">
+      <label class="field-label req">¿Qué tan probable es que recomiendes nuestro servicio de onboarding a otra empresa?</label>
+      <div class="faces" data-name="nps">
+        <label class="face-opt"><input type="radio" name="nps" value="1" required><span class="face-emoji">😡</span><span class="face-label">Muy&nbsp;improbable</span></label>
+        <label class="face-opt"><input type="radio" name="nps" value="2"><span class="face-emoji">🙁</span><span class="face-label">Improbable</span></label>
+        <label class="face-opt"><input type="radio" name="nps" value="3"><span class="face-emoji">😐</span><span class="face-label">Neutral</span></label>
+        <label class="face-opt"><input type="radio" name="nps" value="4"><span class="face-emoji">🙂</span><span class="face-label">Probable</span></label>
+        <label class="face-opt"><input type="radio" name="nps" value="5"><span class="face-emoji">😄</span><span class="face-label">Muy&nbsp;probable</span></label>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 1 -->
+    <div class="section-title"><span class="section-num">Sección 1</span><h2>Claridad de las reuniones</h2></div>
+
+    <div class="card">
+      <label class="field-label req">¿Las reuniones fueron claras y entendibles?</label>
+      <div class="options" data-name="q1">
+        <label class="opt"><input type="radio" name="q1" value="Sí" required><span>Sí</span></label>
+        <label class="opt"><input type="radio" name="q1" value="Parcialmente"><span>Parcialmente</span></label>
+        <label class="opt"><input type="radio" name="q1" value="No"><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="card">
+      <label class="field-label req">¿Los objetivos de cada reunión estaban claros desde el inicio?</label>
+      <div class="options" data-name="q2">
+        <label class="opt"><input type="radio" name="q2" value="Sí" required><span>Sí</span></label>
+        <label class="opt"><input type="radio" name="q2" value="Parcialmente"><span>Parcialmente</span></label>
+        <label class="opt"><input type="radio" name="q2" value="No"><span>No</span></label>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 2 -->
+    <div class="section-title"><span class="section-num">Sección 2</span><h2>Expectativas</h2></div>
+
+    <div class="card">
+      <label class="field-label req">¿Las reuniones se desarrollaron como esperabas?</label>
+      <div class="options" data-name="q3">
+        <label class="opt"><input type="radio" name="q3" value="Sí, totalmente" required><span>Sí, totalmente</span></label>
+        <label class="opt"><input type="radio" name="q3" value="Parcialmente"><span>Parcialmente</span></label>
+        <label class="opt"><input type="radio" name="q3" value="No" class="no-trigger" data-target="q3_detail"><span>No</span></label>
+      </div>
+      <div class="no-detail" id="q3_detail">
+        <input type="text" name="q3_detalle" placeholder="Contanos por qué no...">
+      </div>
+    </div>
+
+    <div class="card">
+      <label class="field-label req">¿La duración y frecuencia de las reuniones fue adecuada?</label>
+      <div class="options" data-name="q4">
+        <label class="opt"><input type="radio" name="q4" value="Sí" required><span>Sí</span></label>
+        <label class="opt"><input type="radio" name="q4" value="Parcialmente"><span>Parcialmente</span></label>
+        <label class="opt"><input type="radio" name="q4" value="No" class="no-trigger" data-target="q4_detail"><span>No</span></label>
+      </div>
+      <div class="no-detail" id="q4_detail">
+        <input type="text" name="q4_detalle" placeholder="Contanos por qué no...">
+      </div>
+    </div>
+
+    <!-- SECCIÓN 3 -->
+    <div class="section-title"><span class="section-num">Sección 3</span><h2>Capacitación y seguimiento</h2></div>
+
+    <div class="card">
+      <label class="field-label req">¿Recibiste la capacitación necesaria por parte del Onboarding Manager durante las reuniones?</label>
+      <div class="options" data-name="q5">
+        <label class="opt"><input type="radio" name="q5" value="Sí" required><span>Sí</span></label>
+        <label class="opt"><input type="radio" name="q5" value="Parcialmente"><span>Parcialmente</span></label>
+        <label class="opt"><input type="radio" name="q5" value="No"><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="card">
+      <label class="field-label req">¿Pudiste resolver tus dudas y consultas en cada sesión?</label>
+      <div class="options" data-name="q6">
+        <label class="opt"><input type="radio" name="q6" value="Sí" required><span>Sí</span></label>
+        <label class="opt"><input type="radio" name="q6" value="Parcialmente"><span>Parcialmente</span></label>
+        <label class="opt"><input type="radio" name="q6" value="No"><span>No</span></label>
+      </div>
+    </div>
+
+    <button type="submit" class="submit" id="btnSubmit">Enviar respuestas</button>
+    <div class="status" id="status"></div>
+  </form>
+
+  <div class="done-screen" id="doneScreen" style="display:none;">
+    <div class="check">✓</div>
+    <h2>¡Gracias por tu respuesta!</h2>
+    <p>Tu evaluación fue enviada correctamente.</p>
   </div>
 
-  <div id="loadingState" class="loading-state">Cargando datos del Sheet…</div>
-  <div id="errorState" class="error-state" style="display:none;"></div>
-
-  <div id="dashboard" style="display:none;">
-
-    <div class="filters">
-      <div class="filter-group">
-        <label for="filterOM">Onboarding Manager</label>
-        <select id="filterOM"><option value="">Todos</option></select>
-      </div>
-      <div class="filter-group">
-        <label for="filterAM">Account Manager</label>
-        <select id="filterAM"><option value="">Todos</option></select>
-      </div>
-      <div class="filter-group">
-        <label for="searchEmpresa">Buscar empresa</label>
-        <input type="text" id="searchEmpresa" placeholder="Ej: Acme">
-      </div>
-      <button class="clear-filters" id="btnClearFilters">Limpiar filtros</button>
-    </div>
-
-    <div class="kpi-row">
-      <div class="kpi-card">
-        <div class="kpi-label">Clientes activos</div>
-        <div class="kpi-value" id="kpiActivos">—</div>
-        <div class="kpi-sub" id="kpiActivosSub"></div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-label">Respuestas recibidas</div>
-        <div class="kpi-value" id="kpiRespuestas">—</div>
-        <div class="kpi-sub" id="kpiRespuestasSub"></div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-label">NPS general</div>
-        <div class="kpi-value" id="kpiNps">—</div>
-        <div class="kpi-sub">Promedio sobre 5, caritas seleccionadas incluidas</div>
-      </div>
-    </div>
-
-    <div class="unmatched-card" id="unmatchedCard" style="display:none;">
-      <h2>Respuestas sin vincular a un cliente</h2>
-      <div class="hint">No encontramos una empresa con ese nombre exacto en la pestaña "Clientes". Elegí a cuál corresponde.</div>
-      <div id="unmatchedList"></div>
-    </div>
-
-    <div class="panels-row">
-      <div class="card">
-        <h2>NPS puntual por OM</h2>
-        <div id="omBreakdown"></div>
-      </div>
-      <div class="card">
-        <h2>Segmentar por carita (elegí una o más)</h2>
-        <div class="faces-filter" id="facesFilter"></div>
-        <div class="faces-hint">El filtro de caritas afecta la tabla de respuestas de abajo.</div>
-      </div>
-    </div>
-
-    <div class="table-card">
-      <div class="table-head-row">
-        <h2>Todas las respuestas</h2>
-        <span class="table-count" id="tableCount"></span>
-      </div>
-      <div class="table-scroll">
-        <table>
-          <thead>
-            <tr>
-              <th>Fecha</th>
-              <th>Empresa</th>
-              <th>OM</th>
-              <th>AM</th>
-              <th>NPS</th>
-              <th>Q1 Reuniones claras</th>
-              <th>Q2 Objetivos claros</th>
-              <th>Q3 Cumplió expectativas</th>
-              <th>Q3 Detalle</th>
-              <th>Q4 Duración/frecuencia</th>
-              <th>Q4 Detalle</th>
-              <th>Q5 Capacitación</th>
-              <th>Q6 Dudas resueltas</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody"></tbody>
-        </table>
-      </div>
-      <div class="empty-state" id="emptyState" style="display:none;">No hay respuestas que coincidan con estos filtros.</div>
-    </div>
-
-  </div>
-</div>
+  <footer class="foot">Evaluación Onboarding Manager</footer>
 </div>
 
 <script>
   // ============================================================
-  // Pegá acá la misma URL de Apps Script que usa el formulario
-  // (tiene que terminar en /exec)
+  // 1) Reemplazá esta URL por la de tu Google Apps Script Web App
+  //    (ver instrucciones de configuración provistas aparte)
   // ============================================================
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydfHUJRrTq4mknX1AF9l5QrZKmC3YiNfdlp-RZzhJ-VlIabLO4mZ3D70-2nu_maQyChg/exec";
 
-  const FACES = [
-    { value: "1", emoji: "😡", label: "Muy improbable" },
-    { value: "2", emoji: "🙁", label: "Improbable" },
-    { value: "3", emoji: "😐", label: "Neutral" },
-    { value: "4", emoji: "🙂", label: "Probable" },
-    { value: "5", emoji: "😄", label: "Muy probable" }
-  ];
-
-  let RAW = { clientes: [], respuestas: [] };
-  let activeFaces = new Set(); // vacío = todas
-  let currentPass = '';
-
-  const norm = (s) => (s || "").toString().trim().toLowerCase();
-  const PASS_STORAGE_KEY = 'lebane_panel_pass';
-
-  function el(id){ return document.getElementById(id); }
-
-  function showLock(errorMsg){
-    el('lockScreen').style.display = 'flex';
-    el('appContent').style.display = 'none';
-    el('lockError').textContent = errorMsg || '';
-    el('lockBtn').disabled = false;
-    el('lockBtn').textContent = 'Ingresar';
-  }
-
-  function showApp(){
-    el('lockScreen').style.display = 'none';
-    el('appContent').style.display = 'block';
-  }
-
-  // Intenta autenticar + traer datos con una clave dada.
-  // Devuelve true/false según si la clave fue aceptada.
-  async function attemptLogin(pass){
-    if (!SCRIPT_URL || SCRIPT_URL.includes('PEGA_AQUI')) {
-      showApp();
-      el('loadingState').style.display = 'none';
-      el('configBox').style.display = 'block';
-      return true;
-    }
-
-    el('loadingState').style.display = 'block';
-    el('errorState').style.display = 'none';
-    el('dashboard').style.display = 'none';
-
-    try {
-      const url = SCRIPT_URL + '?pass=' + encodeURIComponent(pass || '');
-      const res = await fetch(url, { method: 'GET' });
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const data = await res.json();
-
-      if (data.authorized === false) {
-        return false;
-      }
-
-      RAW.clientes = data.clientes || [];
-      RAW.respuestas = data.respuestas || [];
-      currentPass = pass || '';
-      localStorage.setItem(PASS_STORAGE_KEY, currentPass);
-
-      showApp();
-      buildFilterOptions();
-      render();
-      el('lastUpdate').textContent = 'Actualizado ' + new Date().toLocaleTimeString('es-AR');
-      el('loadingState').style.display = 'none';
-      el('dashboard').style.display = 'block';
-      return true;
-    } catch (err) {
-      showApp();
-      el('loadingState').style.display = 'none';
-      el('errorState').style.display = 'block';
-      el('errorState').textContent = 'No se pudieron cargar los datos (' + err.message + '). Revisá que el Apps Script esté implementado como Aplicación web con acceso "Cualquier usuario", y que SCRIPT_URL sea correcta.';
-      return true; // ya autenticado, el error es de otra cosa
-    }
-  }
-
-  // Se usa desde el botón "Actualizar" ya autenticado
-  async function loadData(){
-    await attemptLogin(currentPass);
-  }
-
-  function buildFilterOptions(){
-    const omSet = new Set();
-    const amSet = new Set();
-    RAW.clientes.forEach(c => {
-      if (c.OM) omSet.add(c.OM.toString().trim());
-      if (c.AM) amSet.add(c.AM.toString().trim());
-    });
-    RAW.respuestas.forEach(r => {
-      const impl = r['Implementador'];
-      if (impl) omSet.add(impl.toString().trim());
-    });
-
-    const omSelect = el('filterOM');
-    const amSelect = el('filterAM');
-    const currentOM = omSelect.value;
-    const currentAM = amSelect.value;
-    omSelect.innerHTML = '<option value="">Todos</option>' +
-      [...omSet].sort().map(v => `<option value="${v}">${v}</option>`).join('');
-    amSelect.innerHTML = '<option value="">Todos</option>' +
-      [...amSet].sort().map(v => `<option value="${v}">${v}</option>`).join('');
-    omSelect.value = currentOM;
-    amSelect.value = currentAM;
-  }
-
-  // Cliente asociado a cada respuesta, matcheado por nombre de empresa
-  function clientesByEmpresa(){
-    const map = new Map();
-    RAW.clientes.forEach(c => {
-      map.set(norm(c.Empresa), c);
-    });
-    return map;
-  }
-
-  function respuestasEnriquecidas(){
-    const map = clientesByEmpresa();
-    return RAW.respuestas.map(r => {
-      const manual = (r['Empresa vinculada (manual)'] || '').toString().trim();
-      const claveEmpresa = manual || r.Empresa;
-      const cliente = map.get(norm(claveEmpresa)) || null;
-      return Object.assign({}, r, {
-        _OM: (r['Implementador'] || '').toString().trim(),
-        _AM: cliente ? (cliente.AM || '').toString().trim() : '',
-        _matched: !!cliente,
-        _claveEmpresa: claveEmpresa
+  // Resaltar opción elegida + mostrar/ocultar campo de detalle en "No"
+  document.querySelectorAll('.options, .faces').forEach(group => {
+    group.querySelectorAll('input[type=radio]').forEach(input => {
+      input.addEventListener('change', () => {
+        group.querySelectorAll('label').forEach(l => l.classList.remove('checked'));
+        input.closest('label').classList.add('checked');
       });
     });
-  }
+  });
 
-  function aplicarFiltros(respuestas){
-    const om = el('filterOM').value;
-    const am = el('filterAM').value;
-    const search = norm(el('searchEmpresa').value);
-
-    return respuestas.filter(r => {
-      if (om && r._OM !== om) return false;
-      if (am && r._AM !== am) return false;
-      if (search && !norm(r.Empresa).includes(search)) return false;
-      if (activeFaces.size > 0) {
-        const nps = (r['NPS (1-5)'] || '').toString();
-        if (!activeFaces.has(nps)) return false;
-      }
-      return true;
-    });
-  }
-
-  function clientesFiltrados(){
-    const om = el('filterOM').value;
-    const am = el('filterAM').value;
-    const search = norm(el('searchEmpresa').value);
-    return RAW.clientes.filter(c => {
-      const activo = norm(c.Activo) === 'sí' || norm(c.Activo) === 'si' || norm(c.Activo) === 'true' || norm(c.Activo) === 'x';
-      if (!activo) return false;
-      if (om && (c.OM || '').toString().trim() !== om) return false;
-      if (am && (c.AM || '').toString().trim() !== am) return false;
-      if (search && !norm(c.Empresa).includes(search)) return false;
-      return true;
-    });
-  }
-
-  function npsColorClass(avg){
-    if (avg === null) return '';
-    if (avg >= 4) return 'nps-good';
-    if (avg >= 3) return 'nps-mid';
-    return 'nps-bad';
-  }
-
-  function promedio(nums){
-    if (!nums.length) return null;
-    return nums.reduce((a,b)=>a+b,0) / nums.length;
-  }
-
-  function render(){
-    const todasEnriquecidas = respuestasEnriquecidas();
-    renderUnmatched(todasEnriquecidas);
-    // Para el conteo de caritas, respetamos OM/AM/búsqueda pero no el propio filtro de caritas
-    const sinFiltroCaritas = todasEnriquecidas.filter(r => {
-      const om = el('filterOM').value;
-      const am = el('filterAM').value;
-      const search = norm(el('searchEmpresa').value);
-      if (om && r._OM !== om) return false;
-      if (am && r._AM !== am) return false;
-      if (search && !norm(r.Empresa).includes(search)) return false;
-      return true;
-    });
-    const filtradas = aplicarFiltros(todasEnriquecidas);
-    const activos = clientesFiltrados();
-
-    // KPIs
-    el('kpiActivos').textContent = activos.length;
-    el('kpiActivosSub').textContent = RAW.clientes.length ? `de ${RAW.clientes.length} clientes cargados` : 'cargá la pestaña "Clientes"';
-
-    el('kpiRespuestas').textContent = filtradas.length;
-    const tasa = activos.length ? Math.round((filtradas.length / activos.length) * 100) : null;
-    el('kpiRespuestasSub').textContent = tasa !== null ? `${tasa}% de los clientes activos filtrados` : '';
-
-    const npsVals = filtradas.map(r => Number(r['NPS (1-5)'])).filter(n => !isNaN(n));
-    const npsAvg = promedio(npsVals);
-    const npsEl = el('kpiNps');
-    npsEl.className = 'kpi-value ' + npsColorClass(npsAvg);
-    npsEl.innerHTML = npsAvg !== null ? npsAvg.toFixed(2) + '<small>/5</small>' : '—';
-
-    // OM breakdown (usa el set sin filtro de caritas, respetando OM/AM/búsqueda)
-    const omGroups = {};
-    sinFiltroCaritas.forEach(r => {
-      const om = r._OM || 'Sin dato';
-      const nps = Number(r['NPS (1-5)']);
-      if (isNaN(nps)) return;
-      if (!omGroups[om]) omGroups[om] = [];
-      omGroups[om].push(nps);
-    });
-    const omBreakdownEl = el('omBreakdown');
-    const omEntries = Object.entries(omGroups).sort((a,b) => b[1].length - a[1].length);
-    if (!omEntries.length) {
-      omBreakdownEl.innerHTML = '<div class="kpi-sub">Sin respuestas para este filtro.</div>';
-    } else {
-      omBreakdownEl.innerHTML = omEntries.map(([om, vals]) => {
-        const avg = promedio(vals);
-        const pct = (avg / 5) * 100;
-        return `
-          <div class="om-row">
-            <div class="om-name">${om}</div>
-            <div class="om-bar-track"><div class="om-bar-fill" style="width:${pct}%"></div></div>
-            <div class="om-score">${avg.toFixed(2)}</div>
-            <div class="om-count">${vals.length} resp.</div>
-          </div>`;
-      }).join('');
-    }
-
-    // Faces filter card (conteos sobre sinFiltroCaritas)
-    const faceCounts = {};
-    FACES.forEach(f => faceCounts[f.value] = 0);
-    sinFiltroCaritas.forEach(r => {
-      const v = (r['NPS (1-5)'] || '').toString();
-      if (faceCounts.hasOwnProperty(v)) faceCounts[v]++;
-    });
-    el('facesFilter').innerHTML = FACES.map(f => `
-      <div class="face-btn ${activeFaces.has(f.value) ? 'active' : ''}" data-value="${f.value}">
-        <span class="emo">${f.emoji}</span>
-        <span class="cnt">${faceCounts[f.value]}</span>
-        <span class="lbl">${f.label}</span>
-      </div>
-    `).join('');
-    el('facesFilter').querySelectorAll('.face-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const v = btn.getAttribute('data-value');
-        if (activeFaces.has(v)) activeFaces.delete(v); else activeFaces.add(v);
-        render();
+  document.querySelectorAll('.no-trigger').forEach(radio => {
+    radio.addEventListener('change', () => {
+      const targetId = radio.getAttribute('data-target');
+      const group = radio.closest('.options');
+      group.querySelectorAll('input[type=radio]').forEach(r => {
+        const t = r.getAttribute('data-target');
+        if (t) document.getElementById(t).classList.remove('show');
       });
+      if (radio.checked) document.getElementById(targetId).classList.add('show');
     });
+  });
 
-    // Tabla
-    el('tableCount').textContent = `${filtradas.length} respuesta(s)`;
-    const tbody = el('tableBody');
-    if (!filtradas.length) {
-      tbody.innerHTML = '';
-      el('emptyState').style.display = 'block';
-    } else {
-      el('emptyState').style.display = 'none';
-      tbody.innerHTML = filtradas.map(r => {
-        const nps = (r['NPS (1-5)'] || '').toString();
-        const fecha = r['Fecha envío'] ? new Date(r['Fecha envío']).toLocaleString('es-AR', {day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'}) : '';
-        return `
-          <tr>
-            <td>${fecha}</td>
-            <td>${r.Empresa || ''}</td>
-            <td>${r._OM || ''}</td>
-            <td>${r._AM || ''}</td>
-            <td>${nps ? `<span class="nps-pill pill-${nps}">${nps}</span>` : ''}</td>
-            <td>${r['Q1 - Reuniones claras'] || ''}</td>
-            <td>${r['Q2 - Objetivos claros'] || ''}</td>
-            <td>${r['Q3 - Cumplió expectativas'] || ''}</td>
-            <td>${r['Q3 - Detalle (si No)'] || ''}</td>
-            <td>${r['Q4 - Duración/frecuencia adecuada'] || ''}</td>
-            <td>${r['Q4 - Detalle (si No)'] || ''}</td>
-            <td>${r['Q5 - Capacitación recibida'] || ''}</td>
-            <td>${r['Q6 - Dudas resueltas'] || ''}</td>
-          </tr>`;
-      }).join('');
-    }
-  }
+  const form = document.getElementById('formOnboarding');
+  const statusEl = document.getElementById('status');
+  const btn = document.getElementById('btnSubmit');
 
-  function renderUnmatched(todasEnriquecidas){
-    const sinVincular = todasEnriquecidas.filter(r => !r._matched);
-    const card = el('unmatchedCard');
-    const list = el('unmatchedList');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    statusEl.textContent = '';
+    statusEl.className = 'status';
 
-    if (!sinVincular.length) {
-      card.style.display = 'none';
-      list.innerHTML = '';
+    if (SCRIPT_URL.includes('PEGA_AQUI')) {
+      statusEl.textContent = 'Falta configurar la URL de Google Apps Script en el código (SCRIPT_URL).';
+      statusEl.classList.add('error');
       return;
     }
 
-    card.style.display = 'block';
-    const opcionesClientes = RAW.clientes
-      .map(c => (c.Empresa || '').toString().trim())
-      .filter(Boolean)
-      .sort((a,b) => a.localeCompare(b));
+    const data = new FormData(form);
+    const payload = {};
+    for (const [key, value] of data.entries()) payload[key] = value;
+    payload.fecha_envio = new Date().toISOString();
 
-    list.innerHTML = sinVincular.map((r, idx) => {
-      const fecha = r['Fecha envío'] ? new Date(r['Fecha envío']).toLocaleString('es-AR', {day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'}) : '';
-      const key = 'unm_' + idx;
-      return `
-        <div class="unmatched-row" data-key="${key}">
-          <div class="unmatched-info">
-            <div class="unmatched-empresa">${r.Empresa || '(sin nombre)'}</div>
-            <div class="unmatched-meta">${fecha} · OM: ${r._OM || '—'} · NPS: ${r['NPS (1-5)'] || '—'}</div>
-          </div>
-          <div class="unmatched-actions">
-            <select data-key="${key}">
-              <option value="">Elegir empresa de la base…</option>
-              ${opcionesClientes.map(e => `<option value="${e}">${e}</option>`).join('')}
-            </select>
-            <button class="btn-vincular" data-key="${key}">Vincular</button>
-            <span class="link-status" data-key="${key}"></span>
-          </div>
-        </div>`;
-    }).join('');
-
-    list.querySelectorAll('.btn-vincular').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const key = btn.getAttribute('data-key');
-        const select = list.querySelector(`select[data-key="${key}"]`);
-        const status = list.querySelector(`.link-status[data-key="${key}"]`);
-        const empresaVinculada = select.value;
-        if (!empresaVinculada) {
-          status.style.color = 'var(--danger)';
-          status.textContent = 'Elegí una empresa primero';
-          return;
-        }
-        const idx = parseInt(key.replace('unm_',''), 10);
-        const respuesta = sinVincular[idx];
-        vincularEmpresa(respuesta, empresaVinculada, btn, status);
-      });
-    });
-  }
-
-  async function vincularEmpresa(respuesta, empresaVinculada, btn, status){
     btn.disabled = true;
-    status.style.color = 'var(--muted)';
-    status.textContent = 'Vinculando…';
+    btn.textContent = 'Enviando...';
+
     try {
       await fetch(SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({
-          action: 'vincular',
-          id: respuesta.ID || '',
-          fecha: respuesta['Fecha envío'] || '',
-          empresa: respuesta.Empresa || '',
-          empresaVinculada: empresaVinculada
-        })
+        body: JSON.stringify(payload)
       });
-      // Actualizamos en memoria para que desaparezca de la lista al instante
-      const original = RAW.respuestas.find(r =>
-        (respuesta.ID && r.ID === respuesta.ID) ||
-        (!respuesta.ID && r['Fecha envío'] === respuesta['Fecha envío'] && r.Empresa === respuesta.Empresa)
-      );
-      if (original) original['Empresa vinculada (manual)'] = empresaVinculada;
-      render();
+      form.style.display = 'none';
+      document.getElementById('doneScreen').style.display = 'block';
+      window.scrollTo({top:0, behavior:'smooth'});
     } catch (err) {
-      status.style.color = 'var(--danger)';
-      status.textContent = 'Error al vincular, probá de nuevo';
+      statusEl.textContent = 'Hubo un error al enviar. Intentá nuevamente.';
+      statusEl.classList.add('error');
       btn.disabled = false;
-    }
-  }
-
-  el('lockForm').addEventListener('submit', async (ev) => {
-    ev.preventDefault();
-    const pass = el('lockPass').value;
-    el('lockBtn').disabled = true;
-    el('lockBtn').textContent = 'Verificando…';
-    el('lockError').textContent = '';
-    const ok = await attemptLogin(pass);
-    if (!ok) {
-      showLock('Clave incorrecta. Probá de nuevo.');
-      el('lockPass').value = '';
-      el('lockPass').focus();
+      btn.textContent = 'Enviar respuestas';
     }
   });
-
-  el('btnLogout').addEventListener('click', () => {
-    localStorage.removeItem(PASS_STORAGE_KEY);
-    currentPass = '';
-    el('lockPass').value = '';
-    showLock('');
-  });
-
-  el('filterOM').addEventListener('change', render);
-  el('filterAM').addEventListener('change', render);
-  el('searchEmpresa').addEventListener('input', render);
-  el('btnClearFilters').addEventListener('click', () => {
-    el('filterOM').value = '';
-    el('filterAM').value = '';
-    el('searchEmpresa').value = '';
-    activeFaces.clear();
-    render();
-  });
-  el('btnRefresh').addEventListener('click', loadData);
-
-  // Al cargar: si hay una clave recordada, intenta entrar solo. Si no, muestra el candado.
-  (async function init(){
-    const savedPass = localStorage.getItem(PASS_STORAGE_KEY);
-    if (savedPass) {
-      el('lockBtn').disabled = true;
-      el('lockBtn').textContent = 'Verificando…';
-      const ok = await attemptLogin(savedPass);
-      if (!ok) {
-        localStorage.removeItem(PASS_STORAGE_KEY);
-        showLock('');
-      }
-    }
-  })();
 </script>
 
 </body>
