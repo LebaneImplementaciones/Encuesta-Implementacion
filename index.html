@@ -96,9 +96,44 @@
     margin-bottom:4px;
   }
   .q-help{font-size:12.5px;color:var(--muted);margin-bottom:12px;}
-  .req::after{
-    content:" *";
+  .req-star{
+    position:relative;
+    display:inline-block;
     color:var(--danger);
+    cursor:help;
+    font-weight:700;
+    border-bottom:1px dotted var(--danger);
+  }
+  .req-star .tooltip-text{
+    position:absolute;
+    bottom:calc(100% + 8px);
+    left:50%;
+    transform:translateX(-50%) translateY(4px);
+    background:var(--ink);
+    color:#fff;
+    font-size:11.5px;
+    font-weight:500;
+    padding:6px 10px;
+    border-radius:7px;
+    white-space:nowrap;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .15s, transform .15s;
+    z-index:5;
+  }
+  .req-star .tooltip-text::after{
+    content:"";
+    position:absolute;
+    top:100%;
+    left:50%;
+    transform:translateX(-50%);
+    border:5px solid transparent;
+    border-top-color:var(--ink);
+  }
+  .req-star:hover .tooltip-text,
+  .req-star.active .tooltip-text{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
   }
   select, input[type=text], textarea{
     width:100%;
@@ -252,26 +287,26 @@
   <form id="formOnboarding">
 
     <div class="card meta-card">
-      <label class="field-label req" for="implementador">Implementador</label>
+      <label class="field-label req-wrap" for="implementador">Implementador <span class="req-star">*<span class="tooltip-text">Pregunta obligatoria</span></span></label>
       <select id="implementador" name="implementador" required>
         <option value="" disabled selected>Seleccioná un implementador</option>
         <option value="Agustin">Agustín</option>
         <option value="Brisa">Brisa</option>
-        <option value="Gabriela">Gabriela</option>
+        <option value="Gabriel">Gabriel</option>
         <option value="Julieta">Julieta</option>
       </select>
 
       <div style="height:16px"></div>
 
-      <label class="field-label req" for="empresa">Nombre de la empresa</label>
+      <label class="field-label req-wrap" for="empresa">Nombre de la empresa <span class="req-star">*<span class="tooltip-text">Pregunta obligatoria</span></span></label>
       <input type="text" id="empresa" name="empresa" placeholder="Ej: Acme S.A." required>
     </div>
 
-    <!-- NPS -->
-    <div class="section-title"><span class="section-num">Para empezar</span><h2>Recomendación</h2></div>
+    <!-- CSAT -->
+    <div class="section-title"><span class="section-num">CSAT</span><h2>Recomendación</h2></div>
 
     <div class="card nps-card">
-      <label class="field-label req">¿Qué tan probable es que recomiendes nuestro servicio de onboarding a otra empresa?</label>
+      <label class="field-label req-wrap">¿Qué tan probable es que recomiendes a tu implementador/a? <span class="req-star">*<span class="tooltip-text">Pregunta obligatoria</span></span></label>
       <div class="faces" data-name="nps">
         <label class="face-opt"><input type="radio" name="nps" value="1" required><span class="face-emoji">😡</span><span class="face-label">Muy&nbsp;improbable</span></label>
         <label class="face-opt"><input type="radio" name="nps" value="2"><span class="face-emoji">🙁</span><span class="face-label">Improbable</span></label>
@@ -279,75 +314,24 @@
         <label class="face-opt"><input type="radio" name="nps" value="4"><span class="face-emoji">🙂</span><span class="face-label">Probable</span></label>
         <label class="face-opt"><input type="radio" name="nps" value="5"><span class="face-emoji">😄</span><span class="face-label">Muy&nbsp;probable</span></label>
       </div>
+      <div class="no-detail" id="nps_comment_wrap">
+        <div style="height:14px"></div>
+        <label class="field-label" for="nps_comentario">Dejá tu comentario sobre tu implementador/a</label>
+        <textarea id="nps_comentario" name="nps_comentario" placeholder="Opcional"></textarea>
+      </div>
     </div>
 
     <!-- SECCIÓN 1 -->
-    <div class="section-title"><span class="section-num">Sección 1</span><h2>Claridad de las reuniones</h2></div>
+    <div class="section-title"><span class="section-num">Sección 1</span><h2>Comentarios adicionales</h2></div>
 
     <div class="card">
-      <label class="field-label req">¿Las reuniones fueron claras y entendibles?</label>
-      <div class="options" data-name="q1">
-        <label class="opt"><input type="radio" name="q1" value="Sí" required><span>Sí</span></label>
-        <label class="opt"><input type="radio" name="q1" value="Parcialmente"><span>Parcialmente</span></label>
-        <label class="opt"><input type="radio" name="q1" value="No"><span>No</span></label>
-      </div>
+      <label class="field-label" for="q7">¿Qué sugerencias o comentarios tenés sobre el proceso de onboarding?</label>
+      <textarea id="q7" name="q7" placeholder="Opcional"></textarea>
     </div>
 
     <div class="card">
-      <label class="field-label req">¿Los objetivos de cada reunión estaban claros desde el inicio?</label>
-      <div class="options" data-name="q2">
-        <label class="opt"><input type="radio" name="q2" value="Sí" required><span>Sí</span></label>
-        <label class="opt"><input type="radio" name="q2" value="Parcialmente"><span>Parcialmente</span></label>
-        <label class="opt"><input type="radio" name="q2" value="No"><span>No</span></label>
-      </div>
-    </div>
-
-    <!-- SECCIÓN 2 -->
-    <div class="section-title"><span class="section-num">Sección 2</span><h2>Expectativas</h2></div>
-
-    <div class="card">
-      <label class="field-label req">¿Las reuniones se desarrollaron como esperabas?</label>
-      <div class="options" data-name="q3">
-        <label class="opt"><input type="radio" name="q3" value="Sí, totalmente" required><span>Sí, totalmente</span></label>
-        <label class="opt"><input type="radio" name="q3" value="Parcialmente"><span>Parcialmente</span></label>
-        <label class="opt"><input type="radio" name="q3" value="No" class="no-trigger" data-target="q3_detail"><span>No</span></label>
-      </div>
-      <div class="no-detail" id="q3_detail">
-        <input type="text" name="q3_detalle" placeholder="Contanos por qué no...">
-      </div>
-    </div>
-
-    <div class="card">
-      <label class="field-label req">¿La duración y frecuencia de las reuniones fue adecuada?</label>
-      <div class="options" data-name="q4">
-        <label class="opt"><input type="radio" name="q4" value="Sí" required><span>Sí</span></label>
-        <label class="opt"><input type="radio" name="q4" value="Parcialmente"><span>Parcialmente</span></label>
-        <label class="opt"><input type="radio" name="q4" value="No" class="no-trigger" data-target="q4_detail"><span>No</span></label>
-      </div>
-      <div class="no-detail" id="q4_detail">
-        <input type="text" name="q4_detalle" placeholder="Contanos por qué no...">
-      </div>
-    </div>
-
-    <!-- SECCIÓN 3 -->
-    <div class="section-title"><span class="section-num">Sección 3</span><h2>Capacitación y seguimiento</h2></div>
-
-    <div class="card">
-      <label class="field-label req">¿Recibiste la capacitación necesaria por parte del Onboarding Manager durante las reuniones?</label>
-      <div class="options" data-name="q5">
-        <label class="opt"><input type="radio" name="q5" value="Sí" required><span>Sí</span></label>
-        <label class="opt"><input type="radio" name="q5" value="Parcialmente"><span>Parcialmente</span></label>
-        <label class="opt"><input type="radio" name="q5" value="No"><span>No</span></label>
-      </div>
-    </div>
-
-    <div class="card">
-      <label class="field-label req">¿Pudiste resolver tus dudas y consultas en cada sesión?</label>
-      <div class="options" data-name="q6">
-        <label class="opt"><input type="radio" name="q6" value="Sí" required><span>Sí</span></label>
-        <label class="opt"><input type="radio" name="q6" value="Parcialmente"><span>Parcialmente</span></label>
-        <label class="opt"><input type="radio" name="q6" value="No"><span>No</span></label>
-      </div>
+      <label class="field-label" for="q8">¿Qué fue lo que más valoraste de las reuniones?</label>
+      <textarea id="q8" name="q8" placeholder="Opcional"></textarea>
     </div>
 
     <button type="submit" class="submit" id="btnSubmit">Enviar respuestas</button>
@@ -360,7 +344,7 @@
     <p>Tu evaluación fue enviada correctamente.</p>
   </div>
 
-  <footer class="foot">Lebane.app | Software de gestión para desarrolladoras, constructoras e inmobiliarias</footer>
+  <footer class="foot">Evaluación Onboarding Manager</footer>
 </div>
 
 <script>
@@ -370,7 +354,7 @@
   // ============================================================
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw7u2qZcOT96DLh5_OUeApPiDusIhigkL4jNFFkjY2FAKnCNOxXImIFwvzyZjf0Oc35yw/exec";
 
-  // Resaltar opción elegida + mostrar/ocultar campo de detalle en "No"
+  // Resaltar opción elegida
   document.querySelectorAll('.options, .faces').forEach(group => {
     group.querySelectorAll('input[type=radio]').forEach(input => {
       input.addEventListener('change', () => {
@@ -380,15 +364,25 @@
     });
   });
 
-  document.querySelectorAll('.no-trigger').forEach(radio => {
+  // Tooltips de "pregunta obligatoria": funcionan con hover (desktop) y con tap (celular)
+  document.querySelectorAll('.req-star').forEach(star => {
+    star.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      const wasActive = star.classList.contains('active');
+      document.querySelectorAll('.req-star.active').forEach(s => s.classList.remove('active'));
+      if (!wasActive) star.classList.add('active');
+    });
+  });
+  document.addEventListener('click', (ev) => {
+    if (!ev.target.closest('.req-star')) {
+      document.querySelectorAll('.req-star.active').forEach(s => s.classList.remove('active'));
+    }
+  });
+
+  // Mostrar el campo de comentario del NPS apenas se elige cualquier carita
+  document.querySelectorAll('input[name="nps"]').forEach(radio => {
     radio.addEventListener('change', () => {
-      const targetId = radio.getAttribute('data-target');
-      const group = radio.closest('.options');
-      group.querySelectorAll('input[type=radio]').forEach(r => {
-        const t = r.getAttribute('data-target');
-        if (t) document.getElementById(t).classList.remove('show');
-      });
-      if (radio.checked) document.getElementById(targetId).classList.add('show');
+      document.getElementById('nps_comment_wrap').classList.add('show');
     });
   });
 
